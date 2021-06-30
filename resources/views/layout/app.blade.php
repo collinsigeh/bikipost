@@ -18,8 +18,13 @@
         
         <ul class="flex items-center">
             @auth
-                <li class="p-3">Collins Igeh</li>
-                <li class="p-3">Logout</li>
+                <li class="p-3">{{ auth()->user()->name }}</li>
+
+                <form action="{{ route('logout') }}" method="post" class="inline p-3">
+                    @csrf
+
+                    <button type="submit">Logout</button>
+                </form>
             @endauth
 
             @guest
