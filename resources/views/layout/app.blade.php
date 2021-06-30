@@ -12,7 +12,7 @@
     <nav class="mb-3 p-3 bg-white flex justify-between">
         <ul class="flex items-center">
             <li class="p-3"><a href="{{ route('home') }}">Home</a></li>
-            <li class="p-3">Dashboard</li>
+            <li class="p-3"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="p-3">Posts</li>
         </ul>
         
@@ -21,9 +21,9 @@
                 <li class="p-3">Collins Igeh</li>
                 <li class="p-3">Logout</li>
             @endauth
-            
+
             @guest
-                <li class="p-3">Login</li>
+                <li class="p-3"><a href="{{ route('login') }}">Login</a></li>
                 <li class="p-3"><a href="{{ route('register') }}">Register</a></li>
             @endguest
         </ul>
