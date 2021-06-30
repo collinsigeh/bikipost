@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="mx-auto w-8/12 p-6 bg-white rounded">
-        Posts
+        Dashboard
     </div>
 @endsection
