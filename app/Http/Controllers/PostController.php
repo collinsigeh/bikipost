@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    public function __construct(){
+
+        $this->middleware('auth')->except('index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +20,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        $posts = Post::orderBy('created_at', 'desc')->paginate(3);
+
+        return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -25,7 +32,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return redirect()->route('post.index');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -40,12 +47,9 @@ class PostController extends Controller
             'post_content' => 'required'
         ]);
 
-        Post::create([
-            'user_id' => auth()->user()->id,
-            'content' => $request->post_content
-        ]);
+        auth()->user()->posts()->create(['content' => $request->post_content]);
 
-        return redirect()->route('post.index');
+        return back();
     }
 
     /**

@@ -32,4 +32,4 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::resource('/post', PostController::class);
+Route::resource('/posts', PostController::class);
