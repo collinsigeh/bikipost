@@ -12,8 +12,10 @@
     <nav class="mb-3 p-3 bg-white flex justify-between">
         <ul class="flex items-center">
             <li class="p-3"><a href="{{ route('home') }}">Home</a></li>
-            <li class="p-3"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="p-3">Posts</li>
+            @auth
+                <li class="p-3"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            @endauth
+            <li class="p-3"><a href="{{ route('post.index') }}">Posts</a></li>
         </ul>
         
         <ul class="flex items-center">
