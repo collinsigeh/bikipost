@@ -28,21 +28,28 @@
 
             @forelse ($posts as $post)
                 <div class="p-3 mb-3 bg-gray-100 rounded">
+                    <p class="mb-3">
+                        <a href="" class="font-medium">{{ $post->user->name }}</a> - <span class="italic text-sm text-gray-500">posted 
+                            {{ $post->created_at->diffForHumans() }}</span>
+                    </p>
 
                     <p class="mb-3">
                         {{ $post->content }}
                     </p>
+                    
+                    <div class="flex items-center">
+                        <form action="" method="post" class="mr-1">
+                            @csrf
 
-                    <hr>
+                            <button type="submit" class="text-blue-500">Like</button>
+                        </form>
 
-                    <span class="italic text-sm text-gray-400">
-                        Posted by 
-
-                        <a href="" class="font-medium">{{ $post->user->name }}</a>
-
-                        - {{ $post->created_at->diffForHumans() }}
-                    </span>
-
+                        <form action="" method="post" class="mr-1">
+                            @csrf
+                            
+                            <button type="submit" class="text-blue-500">Unlike</button>
+                        </form>
+                    </div>
                 </div>
             @empty
                 <p class="italic">
