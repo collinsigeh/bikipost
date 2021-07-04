@@ -38,17 +38,22 @@
                     </p>
                     
                     <div class="flex items-center">
-                        <form action="" method="post" class="mr-1">
-                            @csrf
+                        @if ($post->likedBy(auth()->user()))
+                            <form action="" method="post" class="mr-1">
+                                @csrf
 
-                            <button type="submit" class="text-blue-500">Like</button>
-                        </form>
+                                <button type="submit" class="text-blue-500">Unlike</button>
+                            </form>
+                        @else
+                            <form action="{{ route('post.likes', $post->id) }}" method="post" class="mr-1">
+                                @csrf
 
-                        <form action="" method="post" class="mr-1">
-                            @csrf
-                            
-                            <button type="submit" class="text-blue-500">Unlike</button>
-                        </form>
+                                <button type="submit" class="text-blue-500">Like</button>
+                            </form>
+                        @endif
+
+
+                        {{ $post->likes->count() }} {{ Str::plural('like', $post->likes->count())   }}
                     </div>
                 </div>
             @empty

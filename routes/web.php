@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostLikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,5 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::resource('/posts', PostController::class);
+
+Route::post('post/{post}/likes', [PostLikeController::class, 'store'])->name('post.likes');
