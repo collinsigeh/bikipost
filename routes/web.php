@@ -36,3 +36,4 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::resource('/posts', PostController::class);
 
 Route::post('post/{post}/likes', [PostLikeController::class, 'store'])->name('post.likes');
+Route::delete('post/{post}/likes', [PostLikeController::class, 'destroy']);
