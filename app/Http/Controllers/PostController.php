@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->paginate(3);
+        $posts = Post::orderBy('id', 'desc')->with('user', 'likes')->paginate(3);
 
         return view('posts.index')->with('posts', $posts);
     }
