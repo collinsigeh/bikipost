@@ -36,6 +36,17 @@
                     <p class="mb-3">
                         {{ $post->content }}
                     </p>
+
+                    @if ($post->ownedBy(auth()->user()))
+                        <div class="mb-3">
+                            <form action="{{ route('posts.destroy', $post) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit" class="text-blue-500">Delete</button>
+                            </form>
+                        </div>
+                    @endif
                     
                     <div class="flex items-center">
                         @auth
