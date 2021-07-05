@@ -20,7 +20,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->with('user', 'likes')->paginate(3);
+        $posts = Post::latest()->with('user', 'likes')->paginate(3);
 
         return view('posts.index')->with('posts', $posts);
     }
@@ -94,10 +94,10 @@ class PostController extends Controller
      */
     public function destroy(Request $request, Post $post)
     {
-        if($post->ownedBy($request->user()))
-        {
-            $post->delete();
-        }
+
+        $this->authorize('delete', $post);
+
+        $post->delete();
 
         return back();
     }
