@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\UserPostConstroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
+
+Route::get('/user/{user:username}/posts', [UserPostConstroller::class, 'index'])->name('user.posts');
 
 Route::resource('/posts', PostController::class);
 Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->name('posts.destroy');

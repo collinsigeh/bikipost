@@ -29,7 +29,8 @@
             @forelse ($posts as $post)
                 <div class="p-3 mb-3 bg-gray-100 rounded">
                     <p class="mb-3">
-                        <a href="" class="font-medium">{{ $post->user->name }}</a> - <span class="italic text-sm text-gray-500">posted 
+                        <a href="{{ route('user.posts', $post->user) }}" class="font-medium">{{ $post->user->name }}</a> 
+                            - <span class="italic text-sm text-gray-500">posted 
                             {{ $post->created_at->diffForHumans() }}</span>
                     </p>
 
