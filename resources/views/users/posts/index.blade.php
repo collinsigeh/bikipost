@@ -6,7 +6,8 @@
         <h1 class="font-medium text-2xl italic">Posts by &commat;{{ $user->username }}</h1>
 
         <p>
-            Posted {{ $posts->count() }} {{ Str::plural('post', $posts->count()) }} and received x likes
+            Posted {{ $posts->count() }} {{ Str::plural('post', $posts->count()) }} and received 
+                {{ $user->receivedLikes->count() }} {{ Str::plural('like', $user->receivedLikes->count() )}}
         </p>
     </div>
 
